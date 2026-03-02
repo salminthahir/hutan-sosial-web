@@ -1,0 +1,154 @@
+.container {
+    min-height: 100vh;
+    background-color: var(--background);
+}
+
+.header {
+    background: var(--surface);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.backBtn {
+    margin-right: 16px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.backBtn:hover {
+    background: var(--forest-fog);
+}
+
+.title {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.main {
+    padding: 24px 16px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.alertsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.alertCard {
+    display: flex;
+    padding: 16px;
+    border-radius: 12px;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.alertWarning {
+    background: rgba(255, 143, 0, 0.1);
+    border: 1px solid rgba(255, 143, 0, 0.3);
+}
+
+.alertWarning .alertIcon {
+    color: var(--sun-amber);
+}
+
+.alertDanger {
+    background: rgba(198, 40, 40, 0.1);
+    border: 1px solid rgba(198, 40, 40, 0.3);
+}
+
+.alertDanger .alertIcon {
+    color: var(--alert-red);
+}
+
+.alertTitle {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.alertDesc {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.summaryGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.summaryCard {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--card-border);
+}
+
+.summaryIconSuccess {
+    color: var(--forest-mid);
+    margin-bottom: 12px;
+}
+
+.summaryIconWarning {
+    color: var(--sun-amber);
+    margin-bottom: 12px;
+}
+
+.summaryValue {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.summaryLabel {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.chartSection {
+    margin-bottom: 24px;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.chartCard {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px 16px 16px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--card-border);
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding: 32px 24px;
+    }
+}

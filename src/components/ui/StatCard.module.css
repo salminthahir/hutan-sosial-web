@@ -1,0 +1,59 @@
+.card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--card-border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.iconWrapper {
+    padding: 8px;
+    border-radius: 8px;
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 12px;
+}
+
+.forestMid .iconWrapper {
+    background: rgba(46, 125, 50, 0.1);
+    color: var(--forest-mid);
+}
+
+.soilBrown .iconWrapper {
+    background: rgba(121, 85, 72, 0.1);
+    color: var(--soil-brown);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.title {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.active {
+    border-color: var(--forest-mid);
+    box-shadow: 0 0 0 1px var(--forest-mid);
+}

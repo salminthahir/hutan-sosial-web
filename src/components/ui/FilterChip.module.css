@@ -1,0 +1,38 @@
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid #E0E0E0;
+    color: #333;
+    transition: all 0.2s;
+    height: 36px;
+}
+
+.chip:hover {
+    background: #F5F5F5;
+}
+
+.selected {
+    background: var(--forest-mid);
+    border-color: var(--forest-mid);
+    color: white;
+}
+
+.selected:hover {
+    background: var(--forest-deep);
+}
+
+.icon {
+    margin-right: 6px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.selected .label {
+    font-weight: 600;
+}

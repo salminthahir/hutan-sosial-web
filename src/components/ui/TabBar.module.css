@@ -1,0 +1,37 @@
+.tabBarWrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--card-border);
+    background: white;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 20px 20px 0 0;
+}
+
+.tabBarWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.tabBar {
+    display: flex;
+    padding: 0 8px;
+    min-width: max-content;
+}
+
+.tab {
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: var(--forest-mid);
+}
+
+.active {
+    color: var(--forest-mid);
+    border-bottom-color: var(--forest-mid);
+}
