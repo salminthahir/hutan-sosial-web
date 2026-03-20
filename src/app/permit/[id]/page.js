@@ -116,7 +116,7 @@ export default function PermitDetail({ params }) {
         fetchPermit();
     }, [id]);
 
-    if (loading) return <div style={{ height: '100vh', display: 'flex', alignItems: 'center' }}><LoadingSpinner /></div>;
+    if (loading) return <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><LoadingSpinner /></div>;
     if (error) return <ErrorState message={error} onRetry={() => window.location.reload()} />;
     if (!permit) return null;
 
