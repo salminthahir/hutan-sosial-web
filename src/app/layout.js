@@ -13,8 +13,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <head>
-        <link rel="icon" href="/images/logo/Logo_Malut.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/images/logo/Logo_Malut.svg" />
+        <link rel="icon" href="/images/logo/favicon-32.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/images/logo/favicon-192.png" sizes="192x192" />
       </head>
       <body className={inter.className}>
         <div className="app-container">
