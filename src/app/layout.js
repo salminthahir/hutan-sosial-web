@@ -7,6 +7,10 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
   title: 'Hutan Kita',
   description: 'Sistem Informasi Perhutanan Sosial',
+  icons: {
+    icon: '/images/logo/Logo_Malut.svg',
+    apple: '/images/logo/Logo_Malut.svg',
+  },
 };
 
 export default function RootLayout({ children }) {

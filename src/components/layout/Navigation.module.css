@@ -76,16 +76,10 @@
         border-bottom: 1px solid var(--forest-fog);
     }
 
-    .logo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .logoImage {
         width: 40px;
         height: 40px;
-        background-color: var(--forest-mid);
-        color: white;
-        font-weight: bold;
-        border-radius: 10px;
+        object-fit: contain;
         margin-right: 12px;
     }
 

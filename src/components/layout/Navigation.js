@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Home, Search, Map as MapIcon, BarChart2 } from 'lucide-react';
 import styles from './Navigation.module.css';
@@ -18,7 +19,7 @@ export default function Navigation() {
     return (
         <nav className={styles.nav}>
             <div className={styles.brandContainer}>
-                <div className={styles.logo}>PS</div>
+                <Image src="/images/logo/Logo_Malut.svg" alt="Logo" width={40} height={40} className={styles.logoImage} />
                 <div className={styles.brandTitle}>Hutan Sosial</div>
             </div>
             <ul className={styles.navList}>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { FileText, Mountain, Shield, ChevronRight, RefreshCw } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { api } from '@/lib/api';
@@ -62,11 +63,16 @@ export default function DashboardOverview() {
       {/* Header Info */}
       <header className={styles.header}>
         <div className={styles.headerContent}>
-          <h1 className={styles.title}>
-            <span className={styles.titleMobile}>Hutan Sosial</span>
-            <span className={styles.titleDesktop}>Dinas Kehutanan</span>
-          </h1>
-          <p className={styles.subtitle}>Maluku Utara</p>
+          <div className={styles.logoTitleWrapper}>
+            <Image src="/images/logo/Logo_Malut.svg" alt="Logo Malut" width={32} height={32} className={styles.mobileLogo} />
+            <div>
+              <h1 className={styles.title}>
+                <span className={styles.titleMobile}>Hutan Sosial</span>
+                <span className={styles.titleDesktop}>Dinas Kehutanan</span>
+              </h1>
+              <p className={styles.subtitle}>Maluku Utara</p>
+            </div>
+          </div>
         </div>
         <button onClick={fetchStats} className={styles.refreshBtn} aria-label="Refresh">
           <RefreshCw size={20} className={loading ? styles.spinning : ''} />

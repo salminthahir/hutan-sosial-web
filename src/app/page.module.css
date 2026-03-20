@@ -12,6 +12,18 @@
   align-items: center;
 }
 
+.logoTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobileLogo {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .title {
   font-size: 18px;
   font-weight: 700;
@@ -264,5 +276,9 @@
 
   .titleDesktop {
     display: block;
+  }
+
+  .mobileLogo {
+    display: none;
   }
 }
