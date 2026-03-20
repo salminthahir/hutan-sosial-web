@@ -8,8 +8,8 @@ export const metadata = {
   title: 'Hutan Kita',
   description: 'Sistem Informasi Perhutanan Sosial',
   icons: {
-    icon: '/images/logo/Logo_Malut.svg',
-    apple: '/images/logo/Logo_Malut.svg',
+    icon: '/images/logo/Logo_Malut.svg?v=1',
+    apple: '/images/logo/Logo_Malut.svg?v=1',
   },
 };
 
