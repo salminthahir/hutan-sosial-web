@@ -7,6 +7,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { api } from '@/lib/api';
 import ErrorState from '@/components/ui/ErrorState';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import styles from './MapContainer.module.css';
 
 const createBioIcon = () => {
@@ -21,15 +22,19 @@ const createBioIcon = () => {
 export default function BiophysicalMapContainer() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchMap = async () => {
             try {
+                setIsLoading(true);
                 setError(null);
                 const res = await api.getBiophysicalMap();
                 setData(res);
             } catch (err) {
                 setError(err.message);
+            } finally {
+                setIsLoading(false);
             }
         };
         fetchMap();
@@ -53,6 +58,12 @@ export default function BiophysicalMapContainer() {
 
     return (
         <div className={styles.mapWrapper}>
+            {isLoading && (
+                <div className={styles.loadingOverlay}>
+                    <LoadingSpinner />
+                    <p className={styles.loadingText}>Memuat Data Peta...</p>
+                </div>
+            )}
             <LeafletMap center={defaultCenter} zoom={defaultZoom} className={styles.map} zoomControl={false}>
                 <LayersControl position="bottomright">
                     <LayersControl.BaseLayer checked name="Mapbox Streets">

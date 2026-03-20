@@ -7,6 +7,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { api } from '@/lib/api';
 import ErrorState from '@/components/ui/ErrorState';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import styles from './MapContainer.module.css';
 
 const getColorByScore = (score) => {
@@ -27,15 +28,19 @@ const createColoredIcon = (color) => {
 export default function PriorityMapContainer() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchMap = async () => {
             try {
+                setIsLoading(true);
                 setError(null);
                 const res = await api.getPriorityMap();
                 setData(res);
             } catch (err) {
                 setError(err.message);
+            } finally {
+                setIsLoading(false);
             }
         };
         fetchMap();
@@ -59,6 +64,12 @@ export default function PriorityMapContainer() {
 
     return (
         <div className={styles.mapWrapper}>
+            {isLoading && (
+                <div className={styles.loadingOverlay}>
+                    <LoadingSpinner />
+                    <p className={styles.loadingText}>Memuat Data Peta...</p>
+                </div>
+            )}
             <LeafletMap center={defaultCenter} zoom={defaultZoom} className={styles.map} zoomControl={false}>
                 <LayersControl position="bottomright">
                     <LayersControl.BaseLayer checked name="Mapbox Streets">

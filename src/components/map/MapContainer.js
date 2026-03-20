@@ -7,6 +7,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { api } from '@/lib/api';
 import ErrorState from '@/components/ui/ErrorState';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import styles from './MapContainer.module.css';
 
 // Custom Point Icon
@@ -30,15 +31,19 @@ const centroidIcon = L.divIcon({
 export default function MapContainer() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchMap = async () => {
             try {
+                setIsLoading(true);
                 setError(null);
                 const res = await api.getMapData();
                 setData(res);
             } catch (err) {
                 setError(err.message);
+            } finally {
+                setIsLoading(false);
             }
         };
         fetchMap();
@@ -62,6 +67,12 @@ export default function MapContainer() {
 
     return (
         <div className={styles.mapWrapper}>
+            {isLoading && (
+                <div className={styles.loadingOverlay}>
+                    <LoadingSpinner />
+                    <p className={styles.loadingText}>Memuat Data Peta...</p>
+                </div>
+            )}
             <LeafletMap
                 center={defaultCenter}
                 zoom={defaultZoom}

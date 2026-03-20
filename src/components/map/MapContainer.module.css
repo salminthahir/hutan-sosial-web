@@ -41,3 +41,26 @@
         right: 24px;
     }
 }
+
+.loadingOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 24px 48px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.loadingText {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest-deep);
+    margin: 0;
+}
