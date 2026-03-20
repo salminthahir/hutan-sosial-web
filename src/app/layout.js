@@ -5,7 +5,7 @@ import Navigation from '@/components/layout/Navigation';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Hutan Kita',
+  title: 'Perhutanan Sosial',
   description: 'Sistem Informasi Perhutanan Sosial',
 };
 
