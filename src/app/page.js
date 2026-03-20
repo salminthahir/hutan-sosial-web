@@ -13,6 +13,39 @@ import styles from './page.module.css';
 
 const SCHEME_COLORS = ['#2E7D32', '#1565C0', '#E65100', '#6A1B9A', '#00838F'];
 
+const SCHEMES_INFO = [
+  {
+    key: 'HD',
+    name: 'Hutan Desa (HD)',
+    desc: 'Hutan negara yang dikelola oleh lembaga desa (misal: BUMDes atau koperasi desa) untuk kesejahteraan desa.',
+    matchKeywords: ['hutan desa', 'hd']
+  },
+  {
+    key: 'HKm',
+    name: 'Hutan Kemasyarakatan (HKm)',
+    desc: 'Hutan negara yang pemanfaatannya ditujukan untuk memberdayakan masyarakat setempat.',
+    matchKeywords: ['hutan kemasyarakatan', 'hkm']
+  },
+  {
+    key: 'HTR',
+    name: 'Hutan Tanaman Rakyat (HTR)',
+    desc: 'Hutan produksi yang dibangun oleh kelompok masyarakat untuk meningkatkan potensi dan kualitas hutan dengan sistem silvikultur.',
+    matchKeywords: ['hutan tanaman rakyat', 'htr']
+  },
+  {
+    key: 'HA',
+    name: 'Hutan Adat (HA)',
+    desc: 'Hutan yang berada dalam wilayah masyarakat hukum adat, yang diakui hak pengelolaannya oleh negara.',
+    matchKeywords: ['hutan adat', 'ha']
+  },
+  {
+    key: 'KK',
+    name: 'Kemitraan Kehutanan (KK)',
+    desc: 'Kerja sama antara masyarakat setempat dengan pengelola hutan (perhutani/perusahaan) atau pemegang izin usaha pemanfaatan hutan.',
+    matchKeywords: ['kemitraan kehutanan', 'kk']
+  }
+];
+
 export default function DashboardOverview() {
   const router = useRouter();
   const [data, setData] = useState(null);
@@ -52,11 +85,20 @@ export default function DashboardOverview() {
   const byScheme = data.byScheme || [];
   const byRegency = data.byRegency || [];
 
-  // Format Recharts data
-  const pieData = byScheme.map((s) => ({
-    name: s.scheme_name,
-    value: parseInt(s.count, 10) || 0,
-  }));
+  // Format Recharts data (guarantee all 5 schemes)
+  const pieData = SCHEMES_INFO.map(info => {
+    const backendData = byScheme.find(s => {
+      const dbName = (s.scheme_name || '').toLowerCase();
+      // Only match keywords if they are exact words, or just simple includes
+      return info.matchKeywords.some(kw => dbName.includes(kw));
+    });
+    
+    return {
+      name: info.name,
+      value: backendData ? parseInt(backendData.count, 10) || 0 : 0,
+      desc: info.desc
+    };
+  });
 
   return (
     <div className={styles.container}>
@@ -114,10 +156,9 @@ export default function DashboardOverview() {
         </button>
 
         {/* Chart Section */}
-        {byScheme.length > 0 && (
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Distribusi per Skema</h2>
-            <div className={styles.chartCard}>
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Distribusi per Skema</h2>
+          <div className={styles.chartCard}>
               <div className={styles.chartContainer}>
                 <ResponsiveContainer width="100%" height={200}>
                   <PieChart>
@@ -144,15 +185,17 @@ export default function DashboardOverview() {
                       className={styles.legendColor}
                       style={{ backgroundColor: SCHEME_COLORS[index % SCHEME_COLORS.length] }}
                     />
-                    <div className={styles.legendLabel}>
-                      {entry.name} <span className={styles.legendValue}>({entry.value})</span>
+                    <div className={styles.legendContent}>
+                      <div className={styles.legendLabel}>
+                        {entry.name} <span className={styles.legendValue}>({entry.value})</span>
+                      </div>
+                      <div className={styles.legendDesc}>{entry.desc}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
           </section>
-        )}
 
         {/* Regency List Section */}
         {byRegency.length > 0 && (
