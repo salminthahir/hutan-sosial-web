@@ -3,11 +3,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Home, Search, Map as MapIcon, BarChart2 } from 'lucide-react';
+import { Home, Search, Map as MapIcon, BarChart2, LogIn } from 'lucide-react';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
     const pathname = usePathname();
+
+    // Do not render this sidebar on admin pages
+    if (pathname && (pathname.startsWith('/admin') || pathname.startsWith('/login'))) {
+        return null;
+    }
 
     const navItems = [
         { name: 'Beranda', href: '/', icon: Home },
@@ -41,6 +46,14 @@ export default function Navigation() {
                     );
                 })}
             </ul>
+
+            {/* Admin Login Button */}
+            <div className={styles.adminNavContainer}>
+                <Link href="/admin/login" className={styles.adminBtn}>
+                    <LogIn className={styles.icon} size={20} />
+                    <span className={styles.label}>Admin Panel</span>
+                </Link>
+            </div>
         </nav>
     );
 }

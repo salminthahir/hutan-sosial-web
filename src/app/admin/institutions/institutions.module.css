@@ -1,0 +1,334 @@
+.container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    margin: 4px 0 0;
+}
+
+.headerActions {
+    display: flex;
+    gap: 12px;
+}
+
+.addBtn,
+.backBtn,
+.saveBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+}
+
+.addBtn,
+.saveBtn {
+    background-color: var(--forest-mid);
+    color: white;
+}
+
+.addBtn:hover,
+.saveBtn:hover {
+    background-color: var(--forest-dark);
+    transform: translateY(-1px);
+}
+
+.backBtn {
+    background-color: #f1f3f5;
+    color: #495057;
+}
+
+.backBtn:hover {
+    background-color: #e9ecef;
+}
+
+.searchBar {
+    width: 100%;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--forest-mid);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.searchIcon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.tableCard {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    padding: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-light);
+    border-bottom: 1px solid var(--card-border);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 16px;
+    border-bottom: 1px solid #f1f3f5;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover td {
+    background-color: #f8f9fa;
+}
+
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.statusActive {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.statusInactive {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.actionCell {
+    display: flex;
+    gap: 8px;
+}
+
+.actionBtn {
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editBtn {
+    color: #0288d1;
+    background-color: #e1f5fe;
+}
+
+.editBtn:hover {
+    background-color: #b3e5fc;
+}
+
+.deleteBtn {
+    color: #c62828;
+    background-color: #ffebee;
+}
+
+.deleteBtn:hover {
+    background-color: #ffcdd2;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: white;
+    border-top: 1px solid var(--card-border);
+}
+
+.pageInfo {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.pageControls {
+    display: flex;
+    gap: 8px;
+}
+
+.pageBtn {
+    padding: 6px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.pageBtn:not(:disabled):hover {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+}
+
+.pageBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Form Styles */
+.formCard {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.formSection {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.formSection:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.input,
+.select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.input:focus,
+.select:focus {
+    outline: none;
+    border-color: var(--forest-mid);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-dark);
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkboxInput {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--forest-mid);
+    cursor: pointer;
+}
+
+.errorText {
+    color: #c62828;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.centerLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
