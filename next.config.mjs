@@ -1,13 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    async rewrites() {
-        return [
-            {
-                source: '/api/:path*',
-                destination: 'http://localhost:3000/api/:path*' // Proxy to backend
-            }
-        ];
-    }
+    // API routes are now built-in — no proxy needed
+    serverExternalPackages: ['sequelize', 'pg', 'pg-hstore'],
 };
 
 export default nextConfig;

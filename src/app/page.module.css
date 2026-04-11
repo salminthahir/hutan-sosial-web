@@ -72,6 +72,13 @@
   margin-bottom: 24px;
 }
 
+.dashboardCardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
 .legalCard {
   width: 100%;
   text-align: left;
@@ -83,7 +90,6 @@
   gap: 16px;
   border: 1px solid var(--card-border);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  margin-bottom: 24px;
   transition: transform 0.2s;
 }
 
@@ -92,11 +98,24 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+.adminCardOutline {
+  border: 1px dashed var(--forest-mid);
+  background: rgba(46, 125, 50, 0.02);
+}
+
 .legalIconWrapper {
   background: var(--forest-fog);
   padding: 10px;
   border-radius: 12px;
   color: var(--forest-mid);
+  flex-shrink: 0;
+}
+
+.adminIconWrapper {
+  background: rgba(27, 94, 32, 0.1);
+  padding: 10px;
+  border-radius: 12px;
+  color: var(--forest-deep);
   flex-shrink: 0;
 }
 
@@ -257,6 +276,10 @@
 }
 
 @media (min-width: 768px) {
+  .dashboardCardsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .chartCard {
     flex-direction: row;
     align-items: center;

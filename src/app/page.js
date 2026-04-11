@@ -140,20 +140,37 @@ export default function DashboardOverview() {
           />
         </section>
 
-        {/* Legal Dashboard Entry */}
-        <button
-          className={styles.legalCard}
-          onClick={() => router.push('/dashboard/legal')}
-        >
-          <div className={styles.legalIconWrapper}>
-            <Shield size={24} className={styles.legalIcon} />
-          </div>
-          <div className={styles.legalContent}>
-            <div className={styles.legalTitle}>Dashboard Legalitas</div>
-            <div className={styles.legalSubtitle}>Monitoring masa berlaku SK dan kelengkapan dokumen</div>
-          </div>
-          <ChevronRight size={16} className={styles.legalArrow} />
-        </button>
+        <div className={styles.dashboardCardsGrid}>
+          {/* Legal Dashboard Entry */}
+          <button
+            className={styles.legalCard}
+            onClick={() => router.push('/dashboard/legal')}
+          >
+            <div className={styles.legalIconWrapper}>
+              <Shield size={24} className={styles.legalIcon} />
+            </div>
+            <div className={styles.legalContent}>
+              <div className={styles.legalTitle}>Dashboard Legalitas</div>
+              <div className={styles.legalSubtitle}>Monitoring masa berlaku SK dan kelengkapan dokumen</div>
+            </div>
+            <ChevronRight size={16} className={styles.legalArrow} />
+          </button>
+
+          {/* Admin Panel Entry */}
+          <button
+            className={`${styles.legalCard} ${styles.adminCardOutline}`}
+            onClick={() => router.push('/admin/dashboard')}
+          >
+            <div className={styles.adminIconWrapper}>
+              <Shield size={24} className={styles.adminIcon} />
+            </div>
+            <div className={styles.legalContent}>
+              <div className={styles.legalTitle}>Panel Admin</div>
+              <div className={styles.legalSubtitle}>Login untuk mengelola data perhutanan sosial</div>
+            </div>
+            <ChevronRight size={16} className={styles.legalArrow} />
+          </button>
+        </div>
 
         {/* Chart Section */}
         <section className={styles.section}>

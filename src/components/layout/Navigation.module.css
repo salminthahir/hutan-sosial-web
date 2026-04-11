@@ -66,7 +66,7 @@
         bottom: 0;
         right: auto;
         width: 240px;
-        height: 100vh;
+        height: 100dvh;
         border-top: none;
         border-right: 1px solid var(--card-border);
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
@@ -100,7 +100,8 @@
         flex-direction: column;
         justify-content: flex-start;
         padding: 0 16px;
-        flex: none;
+        flex: 1;
+        display: flex;
     }
 
     .navItem {
@@ -135,64 +136,10 @@
         color: white !important;
     }
 
-    .adminNavContainer {
+    .adminNavItem {
         margin-top: auto;
-        padding: 16px;
+        padding-top: 16px;
+        margin-bottom: 16px;
         border-top: 1px solid var(--forest-fog);
     }
-
-    .adminBtn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        padding: 12px;
-        background-color: var(--forest-fog);
-        color: var(--forest-deep);
-        border-radius: 12px;
-        font-weight: 600;
-        transition: all 0.2s ease;
-    }
-
-    .adminBtn .icon {
-        margin-right: 8px;
-        margin-bottom: 0;
-    }
-
-    .adminBtn:hover {
-        background-color: var(--forest-mid);
-        color: white;
-    }
-}
-
-/* Mobile Admin Button (Optional, can hide it or style it) */
-@media (max-width: 767px) {
-    .adminNavContainer {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .adminBtn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        color: var(--text-secondary);
-        text-decoration: none;
-        width: 100%;
-    }
-    
-    .adminBtn .icon {
-        margin-bottom: 4px;
-        color: var(--text-secondary);
-    }
-    
-    .adminBtn .label {
-        font-size: 10px;
-        font-weight: 500;
-        color: var(--text-secondary);
-    }
-}
+}

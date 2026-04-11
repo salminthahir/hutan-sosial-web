@@ -1,6 +1,5 @@
-const API_URL = typeof window !== 'undefined' 
-    ? '' 
-    : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000');
+// API routes are now same-origin — no proxy needed
+const API_URL = '';
 
 async function fetchAPI(endpoint, options = {}) {
     const url = `${API_URL}${endpoint}`;

@@ -45,15 +45,18 @@ export default function Navigation() {
                         </li>
                     );
                 })}
-            </ul>
 
-            {/* Admin Login Button */}
-            <div className={styles.adminNavContainer}>
-                <Link href="/admin/login" className={styles.adminBtn}>
-                    <LogIn className={styles.icon} size={20} />
-                    <span className={styles.label}>Admin Panel</span>
-                </Link>
-            </div>
+                {/* Admin Panel as part of the nav list but separated at the bottom */}
+                <li key="AdminPanel" className={`${styles.navItem} ${styles.adminNavItem}`}>
+                    <Link
+                        href="/admin/login"
+                        className={styles.navLink}
+                    >
+                        <LogIn className={styles.icon} size={24} />
+                        <span className={styles.label}>Admin Panel</span>
+                    </Link>
+                </li>
+            </ul>
         </nav>
     );
 }

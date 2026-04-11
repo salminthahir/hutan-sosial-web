@@ -32,7 +32,7 @@ function useAdvancedData(apiEndpoint) {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const res = await fetch(process.env.NEXT_PUBLIC_API_URL + apiEndpoint, { cache: 'no-store' });
+                const res = await fetch(apiEndpoint, { cache: 'no-store' });
                 if (!res.ok) throw new Error(`API Error: ${res.status}`);
                 const json = await res.json();
                 if (isMounted) setData(json);
