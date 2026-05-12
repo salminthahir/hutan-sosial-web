@@ -47,10 +47,10 @@ const SCHEMES_INFO = [
 ];
 
 const KUPS_CLASS_INFO = [
-  { class: 'Platinum', desc: 'Pasar skala nasional/internasional, mandiri secara permodalan dan manajerial', color: '#607D8B' },
-  { class: 'Gold', desc: 'Sudah memiliki akses pasar yang stabil dan pendapatan rutin', color: '#FBC02D' },
-  { class: 'Blue', desc: 'Sudah memiliki akses permodalan awal dan pasar lokal', color: '#1976D2' },
-  { class: 'Silver', desc: 'Tahap awal pembentukan, menyusun rencana usaha', color: '#9E9E9E' }
+  { class: 'Platinum', desc: 'Pasar skala nasional/internasional, mandiri secara permodalan dan manajerial', color: 'var(--kups-platinum)', bg: 'var(--kups-platinum-bg)', border: '#A7F3D0' },
+  { class: 'Gold', desc: 'Sudah memiliki akses pasar yang stabil dan pendapatan rutin', color: 'var(--kups-gold)', bg: 'var(--kups-gold-bg)', border: '#FDE68A' },
+  { class: 'Blue', desc: 'Sudah memiliki akses permodalan awal dan pasar lokal', color: 'var(--kups-blue)', bg: 'var(--kups-blue-bg)', border: '#C5CAE9' },
+  { class: 'Silver', desc: 'Tahap awal pembentukan, menyusun rencana usaha', color: 'var(--kups-silver)', bg: 'var(--kups-silver-bg)', border: '#D1D5DB' }
 ];
 
 export default function DashboardOverview() {
@@ -293,14 +293,15 @@ export default function DashboardOverview() {
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontWeight: 700, fontSize: '16px', color: info.color }}>Kelas {info.class}</span>
+                    <span style={{ fontWeight: 700, fontSize: '16px', color: 'var(--text-primary)' }}>Kelas {info.class}</span>
                     <span style={{ 
-                      backgroundColor: `${info.color}1A`, 
+                      backgroundColor: info.bg, 
                       color: info.color, 
                       padding: '4px 10px', 
                       borderRadius: '12px',
-                      fontWeight: 600,
-                      fontSize: '14px'
+                      fontWeight: 700,
+                      fontSize: '13px',
+                      border: `1px solid ${info.border}`
                     }}>
                       {count}
                     </span>
