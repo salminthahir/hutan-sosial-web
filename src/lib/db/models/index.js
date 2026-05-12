@@ -16,11 +16,27 @@ const dbConfig = {
     dialectModule: pg,
     dialectOptions: isLocalDB ? {} : {
         ssl: { require: true, rejectUnauthorized: false }
+    },
+    pool: {
+        max: 5, // Keep pool small for serverless
+        min: 0,
+        acquire: 30000,
+        idle: 10000
     }
 };
 
 const db = {};
-const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig);
+
+// Prevent connection leaks during Next.js hot reloads
+let sequelize;
+if (process.env.NODE_ENV === 'production') {
+    sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig);
+} else {
+    if (!global.sequelize) {
+        global.sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig);
+    }
+    sequelize = global.sequelize;
+}
 
 // Custom Model Loading
 // We group models in files, so we manually import them
