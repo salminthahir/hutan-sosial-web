@@ -57,7 +57,7 @@ const KupsController = {
                     model: SocialForestPermits,
                     as: 'permit',
                     attributes: ['id', 'permitNumber', 'permitYear', 'permitStatus'],
-                    required: false,
+                    required: true,
                     include: [
                         {
                             model: Institutions,
@@ -160,7 +160,7 @@ const KupsController = {
             const [clusters] = await sequelize.query(`
                 SELECT DISTINCT "cluster", COUNT(*) as count 
                 FROM "KUPS" 
-                WHERE "cluster" IS NOT NULL AND "cluster" != '' AND "cluster" != '-'
+                WHERE "cluster" IS NOT NULL AND "cluster" != '' AND "cluster" != '-' AND "permitId" IS NOT NULL
                 GROUP BY "cluster" 
                 ORDER BY count DESC
             `);
@@ -168,7 +168,7 @@ const KupsController = {
             const [classes] = await sequelize.query(`
                 SELECT "businessClass", COUNT(*) as count 
                 FROM "KUPS" 
-                WHERE "businessClass" IS NOT NULL
+                WHERE "businessClass" IS NOT NULL AND "permitId" IS NOT NULL
                 GROUP BY "businessClass" 
                 ORDER BY 
                     CASE 
