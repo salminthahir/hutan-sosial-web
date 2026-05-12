@@ -259,59 +259,63 @@ export default function DashboardOverview() {
 
         {/* KUPS Summary Section */}
         <section className={styles.section} style={{ marginTop: '32px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '16px' }}>
-            <div>
-              <h2 className={styles.sectionTitle} style={{ marginBottom: 4 }}>Kelompok Usaha Perhutanan Sosial (KUPS)</h2>
-              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: 0 }}>
-                Total ada <strong>{totalKups.toLocaleString('id-ID')} KUPS</strong> yang telah terhubung dengan izin.
-              </p>
-            </div>
-            <button 
-              className={styles.refreshBtn} 
-              style={{ padding: '6px 12px', fontSize: '13px', borderRadius: '20px', display: 'flex', gap: '4px', alignItems: 'center' }}
-              onClick={() => router.push('/search?view=kups')}
-            >
-              Lihat KUPS <ChevronRight size={14} />
-            </button>
-          </div>
+          <h2 className={styles.sectionTitle}>Kelompok Usaha Perhutanan Sosial (KUPS)</h2>
 
-          <div className={styles.kupsClassesGrid} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
-            {KUPS_CLASS_INFO.map(info => {
-              const countMatch = kupsByClass.find(c => c.businessClass === info.class);
-              const count = countMatch ? parseInt(countMatch.count, 10) : 0;
-              
-              return (
-                <div 
-                  key={info.class} 
-                  className={styles.card} 
-                  style={{ 
-                    padding: '16px', 
-                    borderLeft: `4px solid ${info.color}`,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '8px'
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontWeight: 700, fontSize: '16px', color: 'var(--text-primary)' }}>Kelas {info.class}</span>
-                    <span style={{ 
-                      backgroundColor: info.bg, 
-                      color: info.color, 
-                      padding: '4px 10px', 
+          <div className={styles.chartCard} style={{ padding: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
+              <p style={{ fontSize: '14px', color: 'var(--text-secondary)', margin: 0 }}>
+                Total ada <strong style={{ color: 'var(--text-primary)' }}>{totalKups.toLocaleString('id-ID')} KUPS</strong> yang telah terhubung dengan izin.
+              </p>
+              <button 
+                className={styles.refreshBtn} 
+                style={{ padding: '8px 16px', fontSize: '13px', borderRadius: '20px', display: 'flex', gap: '4px', alignItems: 'center', background: 'var(--forest-light)', color: 'var(--forest-dark)', border: 'none', fontWeight: 600 }}
+                onClick={() => router.push('/search?view=kups')}
+              >
+                Lihat Semua KUPS <ChevronRight size={16} />
+              </button>
+            </div>
+
+            <div className={styles.kupsClassesGrid} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
+              {KUPS_CLASS_INFO.map(info => {
+                const countMatch = kupsByClass.find(c => c.businessClass === info.class);
+                const count = countMatch ? parseInt(countMatch.count, 10) : 0;
+                
+                return (
+                  <div 
+                    key={info.class} 
+                    style={{ 
+                      padding: '16px', 
                       borderRadius: '12px',
-                      fontWeight: 700,
-                      fontSize: '13px',
-                      border: `1px solid ${info.border}`
-                    }}>
-                      {count}
-                    </span>
+                      border: '1px solid var(--card-border)',
+                      borderLeft: `4px solid ${info.color}`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '8px',
+                      background: 'var(--surface)',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.02)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontWeight: 700, fontSize: '15px', color: 'var(--text-primary)' }}>Kelas {info.class}</span>
+                      <span style={{ 
+                        backgroundColor: info.bg, 
+                        color: info.color, 
+                        padding: '4px 10px', 
+                        borderRadius: '12px',
+                        fontWeight: 700,
+                        fontSize: '13px',
+                        border: `1px solid ${info.border}`
+                      }}>
+                        {count}
+                      </span>
+                    </div>
+                    <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.4 }}>
+                      {info.desc}
+                    </p>
                   </div>
-                  <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.4 }}>
-                    {info.desc}
-                  </p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </section>
       </main>
