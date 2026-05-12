@@ -9,6 +9,7 @@ import { getCommodityIconOptions, getCommodityAssetPath } from '@/lib/commodityI
 import { parsePermitName } from '@/lib/utils';
 import Image from 'next/image';
 import TabBar from '@/components/ui/TabBar';
+import PermitDetailSkeleton from './PermitDetailSkeleton';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorState from '@/components/ui/ErrorState';
 import styles from './page.module.css';
@@ -122,7 +123,7 @@ export default function PermitDetail({ params }) {
         fetchPermit();
     }, [id]);
 
-    if (loading) return <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><LoadingSpinner /></div>;
+    if (loading) return <PermitDetailSkeleton />;
     if (error) return <ErrorState message={error} onRetry={() => window.location.reload()} />;
     if (!permit) return null;
 

@@ -5,7 +5,9 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Search as SearchIcon, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { api } from '@/lib/api';
 import PermitCard from '@/components/ui/PermitCard';
+import PermitCardSkeleton from '@/components/ui/PermitCardSkeleton';
 import KupsCard from '@/components/ui/KupsCard';
+import KupsCardSkeleton from '@/components/ui/KupsCardSkeleton';
 import FilterChip from '@/components/ui/FilterChip';
 import ErrorState from '@/components/ui/ErrorState';
 import PermitSummaryModal from '@/components/ui/PermitSummaryModal';
@@ -289,8 +291,12 @@ function SearchContent() {
                 {error && <ErrorState message={error} onRetry={fetchData} />}
 
                 {loading && !data && (
-                    <div className={styles.loadingContainer}>
-                        <div className={styles.spinner} />
+                    <div className={viewMode === 'kups' ? styles.kupsGrid : styles.grid}>
+                        {[...Array(6)].map((_, i) => (
+                            viewMode === 'kups' 
+                                ? <KupsCardSkeleton key={i} /> 
+                                : <PermitCardSkeleton key={i} />
+                        ))}
                     </div>
                 )}
 

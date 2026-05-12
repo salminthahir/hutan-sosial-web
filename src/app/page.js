@@ -7,7 +7,7 @@ import { FileText, Mountain, Shield, ChevronRight, RefreshCw } from 'lucide-reac
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { api } from '@/lib/api';
 import StatCard from '@/components/ui/StatCard';
-import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import DashboardSkeleton from './DashboardSkeleton';
 import ErrorState from '@/components/ui/ErrorState';
 import styles from './page.module.css';
 
@@ -76,7 +76,7 @@ export default function DashboardOverview() {
     router.push(`/search?${params.toString()}`);
   };
 
-  if (loading && !data) return <LoadingSpinner />;
+  if (loading && !data) return <DashboardSkeleton />;
   if (error && !data) return <ErrorState message={error} onRetry={fetchStats} />;
   if (!data) return null;
 
