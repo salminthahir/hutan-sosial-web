@@ -374,13 +374,32 @@ const PublicController = {
                 raw: true
             });
 
+            const totalKups = await KUPS.count({
+                where: { permitId: { [Op.not]: null } }
+            });
+
+            const kupsByClass = await KUPS.findAll({
+                attributes: [
+                    'businessClass',
+                    [sequelize.fn('COUNT', sequelize.col('id')), 'count']
+                ],
+                where: { 
+                    businessClass: { [Op.not]: null },
+                    permitId: { [Op.not]: null }
+                },
+                group: ['businessClass'],
+                raw: true
+            });
+
             res.json({
                 success: true,
                 data: {
                     totalPermits,
                     totalArea: parseFloat(totalArea || 0),
                     byScheme: countByScheme,
-                    byRegency: countByRegency
+                    byRegency: countByRegency,
+                    totalKups,
+                    kupsByClass
                 }
             });
 

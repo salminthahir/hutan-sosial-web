@@ -46,6 +46,13 @@ const SCHEMES_INFO = [
   }
 ];
 
+const KUPS_CLASS_INFO = [
+  { class: 'Platinum', desc: 'Pasar skala nasional/internasional, mandiri secara permodalan dan manajerial', color: '#607D8B' },
+  { class: 'Gold', desc: 'Sudah memiliki akses pasar yang stabil dan pendapatan rutin', color: '#FBC02D' },
+  { class: 'Blue', desc: 'Sudah memiliki akses permodalan awal dan pasar lokal', color: '#1976D2' },
+  { class: 'Silver', desc: 'Tahap awal pembentukan, menyusun rencana usaha', color: '#9E9E9E' }
+];
+
 export default function DashboardOverview() {
   const router = useRouter();
   const [data, setData] = useState(null);
@@ -84,6 +91,8 @@ export default function DashboardOverview() {
   const totalArea = parseFloat(data.totalArea || 0);
   const byScheme = data.byScheme || [];
   const byRegency = data.byRegency || [];
+  const totalKups = data.totalKups || 0;
+  const kupsByClass = data.kupsByClass || [];
 
   // Format Recharts data (guarantee all 5 schemes)
   const pieData = SCHEMES_INFO.map(info => {
@@ -247,6 +256,63 @@ export default function DashboardOverview() {
             </div>
           </section>
         )}
+
+        {/* KUPS Summary Section */}
+        <section className={styles.section} style={{ marginTop: '32px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '16px' }}>
+            <div>
+              <h2 className={styles.sectionTitle} style={{ marginBottom: 4 }}>Kelompok Usaha Perhutanan Sosial (KUPS)</h2>
+              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: 0 }}>
+                Total ada <strong>{totalKups.toLocaleString('id-ID')} KUPS</strong> yang telah terhubung dengan izin.
+              </p>
+            </div>
+            <button 
+              className={styles.refreshBtn} 
+              style={{ padding: '6px 12px', fontSize: '13px', borderRadius: '20px', display: 'flex', gap: '4px', alignItems: 'center' }}
+              onClick={() => router.push('/search?view=kups')}
+            >
+              Lihat KUPS <ChevronRight size={14} />
+            </button>
+          </div>
+
+          <div className={styles.kupsClassesGrid} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+            {KUPS_CLASS_INFO.map(info => {
+              const countMatch = kupsByClass.find(c => c.businessClass === info.class);
+              const count = countMatch ? parseInt(countMatch.count, 10) : 0;
+              
+              return (
+                <div 
+                  key={info.class} 
+                  className={styles.card} 
+                  style={{ 
+                    padding: '16px', 
+                    borderLeft: `4px solid ${info.color}`,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontWeight: 700, fontSize: '16px', color: info.color }}>Kelas {info.class}</span>
+                    <span style={{ 
+                      backgroundColor: `${info.color}1A`, 
+                      color: info.color, 
+                      padding: '4px 10px', 
+                      borderRadius: '12px',
+                      fontWeight: 600,
+                      fontSize: '14px'
+                    }}>
+                      {count}
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.4 }}>
+                    {info.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </main>
     </div>
   );
