@@ -261,7 +261,7 @@ export default function DashboardOverview() {
         <section className={styles.section} style={{ marginTop: '32px' }}>
           <h2 className={styles.sectionTitle}>Kelompok Usaha Perhutanan Sosial (KUPS)</h2>
 
-          <div className={styles.chartCard} style={{ padding: '24px' }}>
+          <div className={styles.listCard} style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
               <p style={{ fontSize: '14px', color: 'var(--text-secondary)', margin: 0 }}>
                 Total ada <strong style={{ color: 'var(--text-primary)' }}>{totalKups.toLocaleString('id-ID')} KUPS</strong> yang telah terhubung dengan izin.
