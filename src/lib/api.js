@@ -44,6 +44,18 @@ export const api = {
     getPermitDetail: (id) => fetchAPI(`/api/public/permit/${id}`),
     getLegalDashboard: () => fetchAPI('/api/public/dashboard/legal'),
 
+    // KUPS
+    searchKups: ({ q = '', businessClass = '', cluster = '', page = 1, limit = 25 }) => {
+        const params = new URLSearchParams();
+        if (q) params.append('q', q);
+        if (businessClass) params.append('businessClass', businessClass);
+        if (cluster) params.append('cluster', cluster);
+        params.append('page', page);
+        params.append('limit', limit);
+        return fetchAPI(`/api/public/kups?${params.toString()}`);
+    },
+    getKupsFilters: () => fetchAPI('/api/public/kups/filters'),
+
     // Advanced
     getPriorityMap: () => fetchAPI('/api/advanced/priority/map'),
     getPriorityDetail: (id) => fetchAPI(`/api/advanced/priority/detail/${id}`),

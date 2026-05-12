@@ -1,0 +1,324 @@
+/* src/components/ui/KupsCard.module.css */
+
+/* ================================================================
+   KUPS CARD — Responsive card with forest-themed design system
+   Uses CSS Variables from globals.css
+   ================================================================ */
+
+/* ---- Card Base ---- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--forest-light);
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  padding: 20px;
+  height: 100%;
+}
+
+/* ---- Header (Name + Badge) ---- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---- Badge (Business Class) ---- */
+.badge {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.badgeSilver {
+  background: var(--kups-silver-bg);
+  color: var(--kups-silver);
+  border: 1px solid #D1D5DB;
+}
+
+.badgeGold {
+  background: var(--kups-gold-bg);
+  color: var(--kups-gold);
+  border: 1px solid #FDE68A;
+}
+
+.badgeBlue {
+  background: var(--kups-blue-bg);
+  color: var(--kups-blue);
+  border: 1px solid #C5CAE9;
+}
+
+.badgePlatinum {
+  background: var(--kups-platinum-bg);
+  color: var(--kups-platinum);
+  border: 1px solid #A7F3D0;
+}
+
+/* ---- Info Rows ---- */
+.infoRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.infoRow:last-of-type {
+  margin-bottom: 0;
+}
+
+.infoIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--forest-light);
+  opacity: 0.8;
+}
+
+.infoLabel {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.infoValue {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ---- Divider ---- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 16px 0;
+}
+
+/* ---- Detail Grid (Ketua & Klaster) ---- */
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detailLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.detailValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+/* ---- Tags / Chips ---- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tagClusterForest {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.tagClusterTourism {
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+.tagClusterDefault {
+  background: var(--kups-silver-bg);
+  color: var(--kups-silver);
+}
+
+.tagMembers {
+  background: rgba(46, 125, 50, 0.08);
+  color: var(--forest-mid);
+}
+
+.tagYear {
+  background: rgba(255, 143, 0, 0.08);
+  color: var(--sun-amber);
+}
+
+/* ---- Detail List (Komoditas, SK, Tahun) — Desktop ---- */
+.detailList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.detailRowLabel {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.detailRowValue {
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: right;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.detailRowValueGreen {
+  composes: detailRowValue;
+  color: var(--forest-mid);
+}
+
+/* ---- Action Button ---- */
+.actionArea {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.actionBtn {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1.5px solid var(--forest-mid);
+  color: var(--forest-mid);
+  background: transparent;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-family: inherit;
+}
+
+.actionBtn:hover {
+  background: var(--forest-fog);
+}
+
+.actionBtnDisabled {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  background: var(--kups-silver-bg);
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  opacity: 0.7;
+  cursor: default;
+  font-family: inherit;
+}
+
+/* ================================================================
+   KUPS GRID — Used by parent page
+   ================================================================ */
+
+.kupsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  transition: opacity 0.3s ease;
+}
+
+.kupsGridLoading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ---- Responsive ---- */
+@media (min-width: 768px) {
+  .cardLink {
+    padding: 24px;
+  }
+
+  .name {
+    font-size: 17px;
+  }
+
+  .badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .kupsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .kupsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}

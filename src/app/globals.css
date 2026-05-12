@@ -20,6 +20,16 @@
   --text-secondary: #546E4A;
   --primary: #2E7D32;
 
+  /* KUPS Class Colors */
+  --kups-silver: #6B7280;
+  --kups-silver-bg: #F3F4F6;
+  --kups-gold: #F59E0B;
+  --kups-gold-bg: #FFF8E1;
+  --kups-blue: #3F51B5;
+  --kups-blue-bg: #E8EAF6;
+  --kups-platinum: #14532D;
+  --kups-platinum-bg: #ECFDF5;
+
   /* Responsive breakpoints */
   --bp-tablet: 768px;
   --bp-desktop: 1200px;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, use } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ChevronLeft, Droplets, Mountain, Layers, TreePine, Leaf, TrendingUp, Users, GraduationCap, Store, BarChart3, AlertTriangle, Shield, Factory, Settings, Map as MapIcon, Maximize2, X, ZoomIn, ZoomOut, Eye, EyeOff, Phone, UserCheck, FileText, Download } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { api } from '@/lib/api';
@@ -95,8 +95,14 @@ export default function PermitDetail({ params }) {
     const unwrappedParams = use(params);
     const id = unwrappedParams.id;
     const router = useRouter();
+    const searchParams = useSearchParams();
 
-    const [activeTab, setActiveTab] = useState(0);
+    // Support deep link: /permit/123?tab=pasar → auto-open tab Pasar (index 4)
+    const tabParam = searchParams.get('tab');
+    const TAB_MAP = { info: 0, biofisik: 1, komoditas: 2, sosial: 3, pasar: 4, risiko: 5, prioritas: 6 };
+    const initialTab = TAB_MAP[(tabParam || '').toLowerCase()] || 0;
+
+    const [activeTab, setActiveTab] = useState(initialTab);
     const [permit, setPermit] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
