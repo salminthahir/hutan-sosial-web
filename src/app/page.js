@@ -47,10 +47,10 @@ const SCHEMES_INFO = [
 ];
 
 const KUPS_CLASS_INFO = [
-  { class: 'Blue', desc: 'Tahap awal, kelompok baru terbentuk dan potensi usaha teridentifikasi', color: 'var(--kups-blue)', bg: 'var(--kups-blue-bg)', border: '#C5CAE9' },
-  { class: 'Silver', desc: 'Tahap moderat, telah membentuk unit usaha dan menyusun rencana kerja', color: 'var(--kups-silver)', bg: 'var(--kups-silver-bg)', border: '#D1D5DB' },
+  { class: 'Platinum', desc: 'Pasar skala nasional/internasional, mandiri secara permodalan dan manajerial', color: 'var(--kups-platinum)', bg: 'var(--kups-platinum-bg)', border: '#A7F3D0' },
   { class: 'Gold', desc: 'Tahap maju, memiliki akses pasar yang stabil dan pendapatan rutin', color: 'var(--kups-gold)', bg: 'var(--kups-gold-bg)', border: '#FDE68A' },
-  { class: 'Platinum', desc: 'Pasar skala nasional/internasional, mandiri secara permodalan dan manajerial', color: 'var(--kups-platinum)', bg: 'var(--kups-platinum-bg)', border: '#A7F3D0' }
+  { class: 'Silver', desc: 'Tahap moderat, telah membentuk unit usaha dan menyusun rencana kerja', color: 'var(--kups-silver)', bg: 'var(--kups-silver-bg)', border: '#D1D5DB' },
+  { class: 'Blue', desc: 'Tahap awal, kelompok baru terbentuk dan potensi usaha teridentifikasi', color: 'var(--kups-blue)', bg: 'var(--kups-blue-bg)', border: '#C5CAE9' }
 ];
 
 export default function DashboardOverview() {
