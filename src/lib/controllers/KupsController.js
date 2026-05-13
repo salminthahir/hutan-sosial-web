@@ -172,10 +172,11 @@ const KupsController = {
                 GROUP BY "businessClass" 
                 ORDER BY 
                     CASE 
-                        WHEN "businessClass" = 'Platinum' THEN 1 
-                        WHEN "businessClass" = 'Gold' THEN 2 
-                        WHEN "businessClass" = 'Blue' THEN 3 
-                        ELSE 4 
+                        WHEN "businessClass" = 'Blue' THEN 1 
+                        WHEN "businessClass" = 'Silver' THEN 2 
+                        WHEN "businessClass" = 'Gold' THEN 3 
+                        WHEN "businessClass" = 'Platinum' THEN 4
+                        ELSE 5 
                     END
             `);
 

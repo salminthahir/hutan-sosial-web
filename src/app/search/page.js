@@ -244,38 +244,49 @@ function SearchContent() {
                         WebkitOverflowScrolling: 'touch',
                         scrollbarWidth: 'none',
                     }}>
-                        {['Platinum', 'Gold', 'Blue', 'Silver'].map(cls => (
-                            <button
-                                key={cls}
-                                onClick={() => handleClassFilter(cls)}
-                                style={{
-                                    padding: '6px 14px',
-                                    borderRadius: '20px',
-                                    fontSize: '12px',
-                                    fontWeight: 600,
-                                    whiteSpace: 'nowrap',
-                                    border: kupsClassFilter === cls
-                                        ? '1.5px solid var(--forest-mid)'
-                                        : '1px solid var(--card-border)',
-                                    background: kupsClassFilter === cls
-                                        ? 'var(--forest-mid)'
-                                        : 'var(--surface)',
-                                    color: kupsClassFilter === cls
-                                        ? '#FFFFFF'
-                                        : 'var(--text-secondary)',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.15s ease',
-                                    fontFamily: 'inherit',
-                                }}
-                            >
-                                {cls}
-                                {kupsFilters?.classes?.find(c => c.name === cls) && (
-                                    <span style={{ marginLeft: '4px', opacity: 0.6 }}>
-                                        ({kupsFilters.classes.find(c => c.name === cls).count})
-                                    </span>
-                                )}
-                            </button>
-                        ))}
+                        {['Blue', 'Silver', 'Gold', 'Platinum'].map(cls => {
+                            const colors = {
+                                Platinum: { bg: 'var(--kups-platinum-bg)', text: 'var(--kups-platinum)', border: '#A7F3D0' },
+                                Gold: { bg: 'var(--kups-gold-bg)', text: 'var(--kups-gold)', border: '#FDE68A' },
+                                Blue: { bg: 'var(--kups-blue-bg)', text: 'var(--kups-blue)', border: '#C5CAE9' },
+                                Silver: { bg: 'var(--kups-silver-bg)', text: 'var(--kups-silver)', border: '#D1D5DB' }
+                            }[cls];
+
+                            const isSelected = kupsClassFilter === cls;
+
+                            return (
+                                <button
+                                    key={cls}
+                                    onClick={() => handleClassFilter(cls)}
+                                    style={{
+                                        padding: '6px 14px',
+                                        borderRadius: '20px',
+                                        fontSize: '12px',
+                                        fontWeight: 600,
+                                        whiteSpace: 'nowrap',
+                                        border: isSelected
+                                            ? `1.5px solid ${colors.text}`
+                                            : `1px solid ${colors.border}`,
+                                        background: isSelected
+                                            ? colors.text
+                                            : colors.bg,
+                                        color: isSelected
+                                            ? '#FFFFFF'
+                                            : colors.text,
+                                        cursor: 'pointer',
+                                        transition: 'all 0.15s ease',
+                                        fontFamily: 'inherit',
+                                    }}
+                                >
+                                    {cls}
+                                    {kupsFilters?.classes?.find(c => c.name === cls) && (
+                                        <span style={{ marginLeft: '4px', opacity: isSelected ? 0.9 : 0.7 }}>
+                                            ({kupsFilters.classes.find(c => c.name === cls).count})
+                                        </span>
+                                    )}
+                                </button>
+                            );
+                        })}
                     </div>
                 )}
 
